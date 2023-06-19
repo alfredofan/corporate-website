@@ -1,0 +1,949 @@
+*{
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+}
+
+
+body,
+html {
+    height: 100% !important;
+    margin: 0 !important;
+    font-family: Arial, Helvetica, sans-serif;
+
+  position: relative;
+  overflow: visible;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0px;
+  margin: 0px;  
+  /* get rid of the horizontal scroll for aesthetics */ 
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  z-index: -10 !important;
+  /* transition: background-color .5s; */
+  
+}
+
+body .container-lg {
+  /* min-height: 80vh; */
+  max-width: 1140px; 
+
+}
+
+.container-form
+{
+    
+
+    /* margin: 100px; */
+    /* margin-top: 25px; */
+    max-width: 450px;
+}
+
+
+/* =========================
+          Side Nav
+============================*/
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  background-color: #212121 ;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover{
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+
+/*in order to get the buttons in the side nav (log in and sign in) side by side  */
+#sign-in-out{
+  
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Equal width columns */
+    grid-gap: 10px; /* Gap between the boxes */
+  
+
+}
+
+#mySidenav.sidenav #menu-logo-sidenav{
+padding: 0px;
+
+}
+
+
+#main {
+  transition: margin-left .5s;
+  /* padding: 16px; */
+}
+
+
+/* ==================
+    Navbar dropdown
+=====================*/
+
+/* Style the sidenav links and the dropdown button */
+ .dropdown-btn {
+  padding: 8px 8px 8px 32px;
+  
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  border: none;
+  margin: 0px 10px;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: #212121;/*•	Retro blue*/
+  color: white;
+}
+
+/* dropdown items */
+.dropdown-container a {
+  font-size: 20px;
+
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #212121;/*•	Retro blue*/
+;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+/* media query for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+/* =========================
+       toggle button
+============================ */
+
+.container {
+  display: inline-block;
+  cursor: pointer;
+
+}
+
+.bar1, .bar2, .bar3 {
+  width: 25px;
+  height: 2px;
+  background-color:  #818181;
+  
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+/* for transition effect - desabled due to aesthetics */
+/* .change .bar1 {
+  transform: translate(0, 9px) rotate(-45deg);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  transform: translate(0, -9px) rotate(45deg);
+} */
+
+
+
+
+/* ===================================
+    Fullscreen Search Box overlay
+====================================== */
+
+
+.openBtn {
+  background: #f1f1f1;
+  border: none;
+  padding: 10px 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.openBtn:hover {
+  background: #bbb;
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0, 0, 0, 0.800);
+}
+
+.overlay-content {
+  position: relative;
+  top: 46%;
+  width: 80%;
+  text-align: center;
+  margin-top: 30px;
+  margin: auto;
+  z-index: 5;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 60px;
+  right: 30px;
+  font-size: 35px;
+  cursor: pointer;
+  color: white;
+}
+
+.overlay .closebtn:hover {
+  color: #ccc;
+}
+
+.overlay input[type=text] {
+
+  padding: 15px;
+  font-size: 17px;
+  border: none;
+  float: left;
+  width: 80%;
+  background: white;
+  z-index: 4;
+}
+
+.overlay input[type=text]:hover {
+  background: #f1f1f1;
+}
+
+.overlay button {
+
+  float: left;
+  width: 20%;
+  padding: 15px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  z-index: 4;
+}
+
+.overlay button:hover {
+  background: #bbb;
+}
+
+
+/* 
+* ==========================================
+*               Seachbox 
+* ==========================================
+*
+*/
+
+#search{
+  color: #212121;
+  min-width: 200px;
+}
+
+#button-addon1{
+color: white;
+background-color: white;
+
+}
+
+#searchbox{
+position: relative;
+z-index: 5;
+margin-top: 150px;
+
+}
+
+.form-control:focus {
+    box-shadow: none;
+  }
+  
+  .form-control-underlined {
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-radius: 0;
+    padding-left: 0;
+  }
+ 
+
+  input.form-control, #password, #confirm_password {
+    border-width: 1px;
+    border-radius: 5px !important;
+    padding: 5px;
+  }
+
+
+  .form-control::placeholder {
+    font-size: 0.95rem;
+    color: #aaa;
+    font-style: italic;
+  }
+ 
+
+
+
+  /* customize of ‘X’ "searchox cancel"from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration 
+{ 
+ /* Remove default */
+ -webkit-appearance: none;
+
+ /* customized X cancel button */
+  height: 17.5px;
+  width: 17.5px;
+  margin-left: .4em;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23777'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
+  cursor: pointer;
+ /* Will place small red box on the right of input (positioning carries over) */
+}
+  
+
+
+  /* make itens not to close from pill searchox inputgroup edges */
+  #searchbox .input-group{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+/* make magnifying glass and search placeholder fit the searchbox */
+  button#button-addon1.btn.btn-link.text-primary {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+    padding-left: 5px;
+    margin: 0px;
+}
+
+
+  /*make searchbbox smaller for mobile devices, it looked too small on 600px  */
+  @media only screen and (max-width: 500px) 
+  {
+  
+    #heroimg div .col-4{
+        max-width: 300px;
+        min-width: 200px;
+        
+        /* max-height: 30px; */
+        min-height: 25px;
+
+        /* align items verticaly inside the pill */
+        display: inline-flex;
+        align-content: center;
+
+      }
+
+  
+    #searchbox input.form-control.border-0.bg-light  {
+        /* max-height: 22.5px; */
+        
+        max-width: 250px;
+        /* margin-left: 2.5px;
+        margin-right: 2.5px; */
+    }   
+    
+    #searchbox div.input-group{
+        display: inline-flex;
+        align-content: center;
+    }
+    }
+  
+
+
+
+/* ==================================
+              Buttons
+=====================================*/
+
+/* nav log in and sign up buttons customization */
+.btn.btn-outline-secondary, .btn.btn-outline-secondary:active{
+  color: #818181;
+  border-color: #818181;
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: small;
+
+}
+
+.btn.btn-primary, .btn.btn-primary:active{
+  background-color: #7b2e0f;
+  color: #818181;
+  border-color:#7b2e0f;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: small;
+}
+
+.sidenav a.btn.btn-primary, .sidenav a.btn.btn-outline-secondary{
+  padding: 4px 8px;
+  min-width: 65px;
+  text-decoration: none;
+  font-size: small;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  }
+
+button.btn.btn-outline-secondary:hover,
+.btn.btn-outline-secondary:hover{
+  /* background-color: white; */
+  opacity: 0.8;
+}
+
+.btn.btn-primary:hover {
+opacity: 0.8;
+}
+/* font family for navbar */
+nav a, nav button {
+  color: black;
+  padding: 0px;
+  margin: 0px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+input.form-control{
+  background-color: inherit;
+}
+
+#black-button{
+  background-color: #212121;
+  color: #f1f1f1;
+  border-color: #212121;
+  /* border-color:#f1f1f1; */
+
+}
+
+
+
+
+/* ==========================
+      Clock Widget
+=============================*/
+
+.clock-widget {
+  width: 112px;
+  height: 112px;
+  font-size: 42px;
+  position: fixed;
+  top: 50px;
+  right: 10px;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.clock-widget.hidden {
+  opacity: 0;
+}
+
+
+
+
+/*===========================
+      Navigation bar 
+=============================*/
+.navbar {
+  overflow: hidden;
+  background-color: #212121;/*•	Retro blue*/
+  position: fixed; /*to fix the menu*/
+  width: 100%; /*to position the menu 100% in the whole screen*/
+  padding: 7.5px;
+  font-size: 14px;
+    font-weight:500;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  z-index: 2;
+
+}
+
+
+
+/* getting the images from the nav and side nav to get opacity on hover */
+#myMenu a:hover, nav img:hover, .sidenav img:hover{
+opacity: 0.8;
+
+}
+
+
+
+#magnifier{
+  color: #818181;
+
+}
+
+#magnifier:hover{
+  color: #f1f1f1 !important;
+}
+
+
+
+/* Navbar a elements "links" color */
+a.nav-link.zone{
+  color: #818181;
+}
+
+/* Navbar a elements "links" color on hover */
+
+a.nav-link.zone:hover{
+  color: #f1f1f1;
+}
+
+/* getting the a elements from the nav and side nav to get opacity when active */
+
+.indicator {
+
+  color: #f1f1f1 !important;
+}
+
+/* centralize the navbar items and align verticaly (removing unwanted padding) */
+li.nav-item, a.nav-link.zone, form.d-flex{
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  padding-top: 0px;
+  margin-top: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+/*  */
+button.btn.btn-secondary{
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+
+/* Adding padding for the <a> tag elements in the navbar */
+a{
+  margin-right: 10px;
+  margin-left: 10px; 
+ }
+ 
+/*for searchbox*/
+form{
+  margin-right: 10px;
+  margin-left: 10px; 
+ }
+
+.form-control, .form-control:active,
+.form-control:hover, .form-control:empty {
+  background: inherit;/*Retro Blue*/
+  color:#212121;
+  border-color: #212121;/*Retro Blue*/
+}
+
+.search-box
+{
+  background:#212121;/*Retro Blue*/
+  max-width: 55rem;
+  width: 100%;
+  height: .5rem;
+  padding: 1rem .2rem;
+  border-color: #212121;/*Retro Blue*/
+  border-radius: 0rem;
+  display: flex;
+  align-items: center;
+  border: 0.1rem solid #212121;/*Retro Blue*/
+  outline: 0;
+}
+
+.input-small{
+  background:inherit;/*Retro Blue*/
+  color:inherit; 
+  border-color: #212121;/*Retro Blue*/
+}
+
+/* hover over <button> tag search button gets highlighted in  gold */
+
+/*for magnifying glass button*/
+.btn-secondary{
+  background: #212121;/*Retro Blue*/
+  border: #212121;/*Retro Blue*/
+  padding-top: 2px;
+  padding-right: 1px;
+  padding-left: 0;
+}
+/*when hovering*/
+.btn-secondary:hover{
+  background:#212121;/*Retro Blue*/
+  color:black;  
+}
+/*when clciking*/
+.btn-secondary.btn-secondary:active{
+  background: #212121;
+  color:rgb(0, 0, 0);  
+  font-weight: bold;
+}
+
+
+
+
+
+/* ===================
+      General
+======================*/
+.container-text
+{
+  background-color:inherit;
+  /* margin: 100px; */
+  margin-top: 50px;
+  /* max-width: 563px; */
+}
+.container-text-small
+{
+  background-color:inherit;
+  /* margin: 100px; */
+  margin-top: 50px;
+  max-width: 563px;
+}
+
+.container-height{
+  padding: 10vh 0;
+ height: fit-content;
+
+}
+
+.row
+{
+  background-color: inherit;
+}
+
+.row.d-flex.justify-content-center img:hover {
+  object-fit: contain;
+  opacity: 0.5;
+}  
+
+
+
+/* no distortion in images */
+.img-fluid{ 
+  object-fit: contain;
+
+}
+
+#myBanner {
+  background-image: url('img/recycle_logo_blue.png');
+  background-size: cover; /* Adjust the image size to cover the element */
+  background-position: center; /* Center the image within the element */
+}
+
+@media only screen and (max-width: 600px)
+{
+body{
+  background-color: rgb(255, 255, 255);
+}
+}
+
+@media only screen and (max-width: 991px)
+{
+.container-text
+{
+  margin:10px;
+  margin-top: 50px;
+  
+}
+}
+
+/* brand flowing nicely from desktop view to mobile without duplication */
+.brand-center, .brand-start{
+  height: 35px;
+  padding: 0px;
+  margin: 0px;
+}
+
+@media only screen and (min-width: 991px)
+{
+nav #brand-center, #main, #mySidenav, #myOverlay{
+  display: none;
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+}
+
+body{
+  background-color: white !important; 
+  /* when the sidenav hides, the backgroud color changes back to white canceling the body overlay background-color: rgba(0, 0, 0, 0.400); */
+}
+}
+
+@media only screen and (max-width: 991px)
+{
+nav #brand-start{
+  display: none;
+  width: 0;
+  height: 0;
+  margin-left: 0px;
+
+}
+
+nav .a .d-md-block, .d-none, .navbar-brand{
+  padding: 0;
+  margin: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+li.nav-item, a.nav-link.zone, form.d-flex{
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+}
+
+/* ====================
+       Banner
+=======================*/
+
+
+#footer.embed-footer, #header.embed-header{
+  display: none;
+  height: -1px;
+  
+}
+
+
+
+.card-img-overlay{
+  z-index: 0;
+  max-height: fit-content;
+  text-align: center;
+  display: flex; 
+  align-items: center;
+
+}
+
+#banner {
+        
+  height: 90%; 
+  width:100%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.banner-image {
+  background-image: url(../img/recycle_logo_blue_banner_2.png) !important;
+  height: 50%!important;
+
+  max-height: 300px!important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative; 
+}
+
+.banner-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-size: clamp(55px, 8.5vw, 75px);
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .banner-image {
+    background-size: auto 150% !important; /* Stops zooming horizontally at 768px viewport width */
+  }
+}
+
+
+#heroimg div .col-4{
+    
+  min-width: 300px;
+  max-width: 445px; /* + 5px left padding magnifying glasses total 450px */
+  position: absolute;
+  z-index: 0; /* make overlay all content but navbar */
+
+}
+
+
+
+
+
+/*=========================
+      Contact Form
+===========================*/
+/* 
+Style was based on Author w3 Shools and modified in order to fit project.
+https://www.w3schools.com/howto/howto_css_contact_form.asp
+*/
+/* Style inputs with type="text", select elements and textareas */
+input[type=text], input[type=tel], select, textarea {
+  width: 100%; /* Full width */
+  padding: 5px; /* Some padding */ 
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 1px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 5px; /* Add a top margin */
+  margin-bottom: 5px; /* Bottom margin */
+  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+/* Style the submit button with a specific background color etc */
+input[type=submit] {
+  background-color: inherit;
+  color: black;
+  padding: 5px 3px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
+/* When moving the mouse over the submit button, add a darker green color */
+input[type=submit]:hover {
+  background-color: #ffa200;/*"yellow Gold"*/
+}
+
+/* Add a background color and some padding around the form the container-text was used*/
+
+/*Button after Contact Us*/
+.btn-outline-dark2{
+  background-color: white;
+  color: black;
+  padding: 5px 3px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-outline-dark2:hover,
+.btn-outline-dark2:active{
+  background-color: #ffa200;/*"yellow Gold"*/
+  color: black;
+}
+
+#link-text  {
+
+  text-decoration: none !important; 
+  font-weight:bold !important; 
+  color:black !important;   
+}
+
+
+
+#link-text:hover{
+
+opacity: 0.5 !important;  
+}
+
+/* ================================
+              Footer
+=================================== */
+
+
+
+
+.back-to-top {
+
+  background-color: inherit;
+  color: #837878;
+  font-size: 14px;
+ 
+  bottom: 275px;
+  right: 20px;
+  cursor: pointer;
+  opacity: 0;
+  
+}
+
+.back-to-top.visible {
+  opacity: 1;
+}
+
+footer{
+  margin-top: 200px;
+  display:flex;
+  justify-content: center;
+
+  
+}
+#footer-nav a{
+  font-size: 14px;
+    font-weight:500;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+color:#212121;
+}
+
+#footer-nav a:hover{
+
+  color:#818181;
+}
+
+
+
+
+/* -------------------- */
+/* Hover effect (not in use) */
+
+/* .zone:hover {
+  -webkit-box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+  -moz-box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+  -o-box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+  box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+} */
+
+
